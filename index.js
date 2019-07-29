@@ -9,7 +9,7 @@ dotenv.config();
 
 const port = process.env.PORT || 3000;
 
-const host = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
+const host = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 mongoose.set('debug', true);
 mongoose.connect(host, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
