@@ -12,6 +12,7 @@ const port = process.env.PORT || 3000;
 const host = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 console.log('Connecting to ' + host);
 
+mongoose.set('debug', true);
 mongoose.connect(host, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
 
 const db = mongoose.connection;
@@ -24,3 +25,27 @@ db.once('open', function () {
         console.log(`API REST running at ${port} port`);
     });
 });
+
+
+// db.categories.aggregate([{
+//     $match: {
+//         "products.name": {
+//             $regex: "String seraching",
+//             '$options': 'i'
+//         }
+//     }
+// },
+// {
+//     $project: {
+//         products: {
+//             $filter: {
+//                 input: '$products',
+//                     as: 'product',
+//                         cond: {
+//                     $ne: ['$$product.price', 240]
+//                 }
+//             }
+//         }
+//     }
+// }
+// ]);

@@ -1,10 +1,29 @@
 'use strict';
 
 const Category = require('../model/category');
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 const unwindField = 'products';
-const idField = '_id';
+const idField = 'id';
 const patternField = 'name';
+
+// default aggregate query to find products
+const aggregateParams = [
+    {
+        $unwind: `$${unwindField}`
+    },
+    {
+        $project: {
+            id: `$${unwindField}.${idField}`,
+            name: `$${unwindField}.name`,
+            description: `$${unwindField}.description`,
+            picture: `$${unwindField}.picture`,
+            price: `$${unwindField}.price`,
+            stock: `$${unwindField}.stock`
+        }
+    }];
+
 
 /**
  * Get products list
@@ -12,25 +31,13 @@ const patternField = 'name';
  * @param {Response} res Http response object
  */
 async function getProducts(req, res) {
-    await Category.aggregate([
-        {
-            $unwind: `$${unwindField}`
-        },
-        {
-            $project: {
-                _id: 0, name: `$${unwindField}.name`,
-                description: `$${unwindField}.description`,
-                picture: `$${unwindField}.picture`,
-                price: `$${unwindField}.price`,
-                stock: `$${unwindField}.stock`
-            }
-        }]).then(products => {
-            if (!products) return res.status(200).send({});
+    await Category.aggregate(aggregateParams).then(products => {
+        if (!products) return res.status(200).send({});
 
-            res.status(200).send(products);
-        }).catch(err => {
-            return res.status(500).send({ message: `Error getting the products: ${err.message}` });
-        });
+        res.status(200).send(products);
+    }).catch(err => {
+        return res.status(500).send({ message: `Error getting the products: ${err.message}` });
+    });
 }
 
 /**
@@ -59,9 +66,14 @@ async function getProductsByName(req, res) {
  */
 async function getProduct(req, res) {
     let productId = req.params.productId;
-    let match = `${unwindField}.${idField}`;
+    let query = aggregateParams;
+    query.push({
+        $match: {
+            id: ObjectId(productId)
+        }
+    });
 
-    await Category.aggregate([{ $unwind: `$${unwindField}` }, { $match: { [match]: productId } }])
+    await Category.aggregate(query)
         .then(async function (product) {
             if (!product) return res.status(404).send({ message: 'The product doesn\'t exist' });
 
