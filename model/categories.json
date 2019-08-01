@@ -1,42 +1,82 @@
 [
-    {
-        "name": "eyeshadow",
-        "products": [
-            {
-                "picture": "http://placehold.it/200x200",
-                "name": "Cruz Harrell",
-                "description": "do veniam do cillum",
-                "price": 2211.99,
-                "stock": 4
-            },
-            {
-                "picture": "http://placehold.it/200x200",
-                "name": "Baird Adkins",
-                "description": "labore irure dolore pariatur",
-                "price": 1069.21,
-                "stock": 9
-            },
-            {
-                "picture": "http://placehold.it/200x200",
-                "name": "Felecia Barrett",
-                "description": "dolor et amet labore",
-                "price": 3077.92,
-                "stock": 10
-            },
-            {
-                "picture": "http://placehold.it/200x200",
-                "name": "Cynthia Richardson",
-                "description": "irure incididunt dolor in",
-                "price": 3687.63,
-                "stock": 9
-            },
-            {
-                "picture": "http://placehold.it/200x200",
-                "name": "Debra Gill",
-                "description": "aliquip enim reprehenderit aliquip",
-                "price": 3729.96,
-                "stock": 6
-            }
-        ]
-    }
+  {
+    "name": "eyeshadow",
+    "products": [
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Cruz Harrell",
+        "description": "do veniam do cillum",
+        "price": 2211.99,
+        "stock": 4
+      },
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Baird Adkins",
+        "description": "labore irure dolore pariatur",
+        "price": 1069.21,
+        "stock": 9
+      },
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Felecia Barrett",
+        "description": "dolor et amet labore",
+        "price": 3077.92,
+        "stock": 10
+      },
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Cynthia Richardson",
+        "description": "irure incididunt dolor in",
+        "price": 3687.63,
+        "stock": 9
+      },
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Debra Gill",
+        "description": "aliquip enim reprehenderit aliquip",
+        "price": 3729.96,
+        "stock": 6
+      }
+    ]
+  },
+  {
+    "name": "eyesbrow",
+    "products": [
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Cruz Harrell",
+        "description": "do veniam do cillum",
+        "price": 2211.99,
+        "stock": 1
+      },
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Baird Adkins",
+        "description": "labore irure dolore pariatur",
+        "price": 1069.21,
+        "stock": 3
+      },
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Felecia Barrett",
+        "description": "dolor et amet labore",
+        "price": 3077.92,
+        "stock": 10
+      },
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Cynthia Richardson",
+        "description": "irure incididunt dolor in",
+        "price": 3687.63,
+        "stock": 50
+      },
+      {
+        "picture": "http://placehold.it/200x200",
+        "name": "Debra Gill",
+        "description": "aliquip enim reprehenderit aliquip",
+        "price": 3729.96,
+        "stock": 11
+      }
+    ]
+  }  
 ]

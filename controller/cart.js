@@ -15,7 +15,7 @@ async function getCart(req, res) {
         if (err) return res.status(500).send({ message: `Error getting the cart: ${err.message}` });
         if (!cart) return res.status(404).send({ message: 'The cart doesn\'t exist' });
 
-        res.status(200).send({ cart });
+        res.status(200).send(cart);
     });
 }
 

@@ -10,16 +10,17 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 
 const host = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+console.log('Connecting to ' + host);
 
-mongoose.set('debug', true);
 mongoose.connect(host, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log('Database connection established');
-    
+
     app.listen(port, (err, res) => {
+        if (err) return console.error(err.message);
         console.log(`API REST running at ${port} port`);
     });
 });
