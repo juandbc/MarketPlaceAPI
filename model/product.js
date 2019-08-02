@@ -2,8 +2,10 @@
 
 const mongoose = require('mongoose');
 // const Double = require('@mongoosejs/double');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const productSchema = new mongoose.Schema({
+    _id: {type: ObjectId},
     picture: { type: String, required: true, default: 'http://placehold.it/200x200' },
     name: { type: String, required: true, unique: true },
     description: { type: String, required: false, default: '' },

@@ -16,13 +16,12 @@ api.use((req, res, next) => {
 
 api.get('/categories/:categoryId', categoryCtrl.getCategory);
 api.get('/categories', categoryCtrl.getCategories);
-api.get('/categories/:categoryId/product?name', productCtrl.getProductsByName);
 api.get('/products?name', productCtrl.getProductsByName);
 api.get('/products', productCtrl.getProducts);
 api.get('/products/:productId', productCtrl.getProduct);
-api.get('/cart/:cartId', cartCtrl.getCart);
-api.post('/cart', cartCtrl.saveCart);
-api.put('/cart/:cartId', cartCtrl.addProduct);
-api.delete('/cart/:cartId/product/:productId', cartCtrl.removeProduct);
+api.get('/carts/:cartId', cartCtrl.getCart);
+api.post('/carts', cartCtrl.saveCart);
+api.put('/carts/:cartId', cartCtrl.addProduct);
+api.delete('/carts/:cartId', cartCtrl.removeProduct);
 
 module.exports = api;

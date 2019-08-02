@@ -1,13 +1,13 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const productSchema = require('./product');
 
+const productsSchema = new mongoose.Schema({
+    productId: String,
+    qty: Number
+});
 const cartSchema = new mongoose.Schema({
-    items: {
-        type: [productSchema],
-        required: false
-    }
+    products: [productsSchema]
 });
 
 module.exports = mongoose.model('cart', cartSchema);

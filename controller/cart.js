@@ -25,14 +25,13 @@ async function getCart(req, res) {
  * @param {Response} res Http response object
  */
 async function saveCart(req, res) {
-    // let cart = new Cart();
-    // cart.items.push(req.body);
+    let product = req.body;
 
-    await Cart.create({items: [req.body]},(err, cartStored) => {
+    await Cart.create({products: [product]},(err, cartStored) => {
         if (err) return res.status(500).send({ message: `Error getting the cart: ${err.message}` });
         if (!cartStored) return res.status(404).send({ message: 'The cart doesn\'t exist' });
 
-        res.status(200).send({ cart: cartStored });
+        res.status(200).send(cartStored);
     });
 }
 
@@ -49,12 +48,35 @@ async function addProduct(req, res) {
         if (err) return res.status(500).send({ message: `Error getting the cart: ${err.message}` });
         if (!cartStored) return res.status(404).send({ message: 'The cart doesn\'t exist' });
 
-        cartStored.items.push(product);
+        cartStored.products.push(product);
         cartStored.save(err => {
             if (err) return res.status(500).send({ message: `Error adding the product: ${err.message}` });
             
-            res.status(200).send({ cart: cartStored });
+            res.status(200).send(cartStored);
         });        
+    });
+}
+
+/**
+ * Update product's quantity
+ * @param {Request} req Http request object
+ * @param {Response} res Http response object
+ */
+async function updateQuantity(req, res) {
+    let cartId = req.params.cartId;
+    let product = req.params.body;
+
+    await Cart.findById(cartId, (err, cartStored) => {
+        if (err) return res.status(500).send({ message: `Error getting the cart: ${err.message}` });
+        if (!cartStored) return res.status(404).send({ message: 'The cart doesn\'t exist' });
+
+        cartStored.products.id(productId).remove();
+        cartStored.products.push(product);
+        cartStored.save(err => {
+            if (err) return res.status(500).send({ message: `Error removing the product: ${err.message}` });
+            
+            res.status(200).send({ success: true, message: 'The product was removed' });
+        });
     });
 }
 
@@ -71,11 +93,11 @@ async function removeProduct(req, res) {
         if (err) return res.status(500).send({ message: `Error getting the cart: ${err.message}` });
         if (!cartStored) return res.status(404).send({ message: 'The cart doesn\'t exist' });
 
-        cartStored.items.id(productId).remove();
+        cartStored.products.productId(productId).remove();
         cartStored.save(err => {
             if (err) return res.status(500).send({ message: `Error removing the product: ${err.message}` });
             
-            res.status(200).send({ message: 'The product was removed' });
+            res.status(200).send({ success: true, message: 'The product was removed' });
         });
     });
 }

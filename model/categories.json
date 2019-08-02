@@ -3,6 +3,7 @@
     "name": "eyeshadow",
     "products": [
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Cruz Harrell",
         "description": "do veniam do cillum",
@@ -10,6 +11,7 @@
         "stock": 4
       },
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Baird Adkins",
         "description": "labore irure dolore pariatur",
@@ -17,6 +19,7 @@
         "stock": 9
       },
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Felecia Barrett",
         "description": "dolor et amet labore",
@@ -24,6 +27,7 @@
         "stock": 10
       },
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Cynthia Richardson",
         "description": "irure incididunt dolor in",
@@ -31,6 +35,7 @@
         "stock": 9
       },
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Debra Gill",
         "description": "aliquip enim reprehenderit aliquip",
@@ -43,6 +48,7 @@
     "name": "eyesbrow",
     "products": [
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Cruz Harrell",
         "description": "do veniam do cillum",
@@ -50,6 +56,7 @@
         "stock": 1
       },
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Baird Adkins",
         "description": "labore irure dolore pariatur",
@@ -57,6 +64,7 @@
         "stock": 3
       },
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Felecia Barrett",
         "description": "dolor et amet labore",
@@ -64,6 +72,7 @@
         "stock": 10
       },
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Cynthia Richardson",
         "description": "irure incididunt dolor in",
@@ -71,6 +80,7 @@
         "stock": 50
       },
       {
+        "_id": ObjectId(),
         "picture": "http://placehold.it/200x200",
         "name": "Debra Gill",
         "description": "aliquip enim reprehenderit aliquip",
