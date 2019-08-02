@@ -14,6 +14,9 @@ api.use((req, res, next) => {
     next();
 });
 
+api.get('/', (req, res) => {
+    res.status(200).send({ message: 'Hello world! This is a API made in NodeJS & ExpressJS.' });
+})
 api.get('/categories/:categoryId', categoryCtrl.getCategory);
 api.get('/categories', categoryCtrl.getCategories);
 api.get('/products?name', productCtrl.getProductsByName);
