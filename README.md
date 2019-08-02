@@ -66,7 +66,7 @@ This a nested document in categories schema
     "description": { 
         "type": "String",
         "required": false,
-        "default": ''
+        "default": ""
     },
     "price": { 
         "type": "Number",
