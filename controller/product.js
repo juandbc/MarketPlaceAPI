@@ -42,10 +42,12 @@ async function getProducts(req, res) {
  * @param {Response} res Http response object
  */
 async function getProductsByName(req, res) {
-    let pattern = req.params.pattern;
-    let match = `${unwindField}.${patternField}`;
+    let pattern = new RegExp(req.params.name, 'i');
+    let match = { [patternField]: pattern };
 
-    Category.aggregate([{ $unwind: `$${unwindField}` }, { $match: { [match]: pattern } }])
+    await Category.aggregate().unwind(unwindField)
+        .project(projectProductJson)
+        .match(match)
         .then(products => {
             if (!products) return res.status(404).send({ message: 'There are no products for the term supplied.' });
 
