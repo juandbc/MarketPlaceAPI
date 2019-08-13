@@ -19,7 +19,6 @@ api.get('/', (req, res) => {
 })
 api.get('/categories/:categoryId', categoryCtrl.getCategory);
 api.get('/categories', categoryCtrl.getCategories);
-api.get('/products/:name', productCtrl.getProductsByName);
 api.get('/products', productCtrl.getProducts);
 api.get('/products/:productId', productCtrl.getProduct);
 api.get('/carts/:cartId', cartCtrl.getCart);

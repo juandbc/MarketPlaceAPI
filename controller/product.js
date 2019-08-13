@@ -27,13 +27,17 @@ const projectProductJson = {
  * @param {Response} res Http response object
  */
 async function getProducts(req, res) {
-    await Category.aggregate().unwind(unwindField).project(projectProductJson).then(products => {
-        if (!products) return res.status(200).send({});
+    if (req.query.name) {
+        getProductsByName(req, res);
+    } else {
+        await Category.aggregate().unwind(unwindField).project(projectProductJson).then(products => {
+            if (!products) return res.status(200).send({});
 
-        res.status(200).send(products);
-    }).catch(err => {
-        return res.status(500).send({ message: `Error getting the products: ${err.message}` });
-    });
+            res.status(200).send(products);
+        }).catch(err => {
+            return res.status(500).send({ message: `Error getting the products: ${err.message}` });
+        });
+    }
 }
 
 /**
@@ -42,7 +46,7 @@ async function getProducts(req, res) {
  * @param {Response} res Http response object
  */
 async function getProductsByName(req, res) {
-    let pattern = new RegExp(req.params.name, 'i');
+    let pattern = new RegExp(req.query.name, 'i');
     let match = { [patternField]: pattern };
 
     await Category.aggregate().unwind(unwindField)

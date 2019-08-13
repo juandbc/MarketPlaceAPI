@@ -25,27 +25,3 @@ db.once('open', function () {
         console.log(`API REST running at ${port} port`);
     });
 });
-
-
-// db.categories.aggregate([{
-//     $match: {
-//         "products.name": {
-//             $regex: "String seraching",
-//             '$options': 'i'
-//         }
-//     }
-// },
-// {
-//     $project: {
-//         products: {
-//             $filter: {
-//                 input: '$products',
-//                     as: 'product',
-//                         cond: {
-//                     $ne: ['$$product.price', 240]
-//                 }
-//             }
-//         }
-//     }
-// }
-// ]);
